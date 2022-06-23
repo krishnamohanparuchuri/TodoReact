@@ -1,0 +1,67 @@
+.todo--completed {
+  font-family: "Kanit", sans-serif;
+  background-color: rgb(219, 218, 218);
+  padding: 1rem;
+  margin: 10px;
+  height: 20%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.todo--completed h4 {
+  font-weight: 100;
+  text-decoration: line-through;
+}
+
+.todo--completed p {
+  font-weight: 100;
+  text-decoration: line-through;
+}
+
+.todo__button {
+  border-radius: 10px;
+  width: 30%;
+}
+
+.todo--notcompleted {
+  font-family: "Kanit", sans-serif;
+  background-color: rgb(172, 214, 176);
+  padding: 0.3rem;
+  margin: 10px;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.todo--remove-btn {
+  display: none;
+}
+
+.todo__button--remove {
+  background-color: rgb(180, 94, 94);
+  padding: 3px;
+}
+
+.todo__button--convert {
+  background-color: rgb(22, 116, 27);
+}
+
+.todo__button-toggle-completed {
+  background-color: rgb(201, 202, 201);
+  width: 20%;
+}
+
+.todo__button-toggle-uncompleted {
+  background-color: rgb(74, 172, 74);
+}
+
+@media screen and (min-width: 1100px) {
+  .todo--completed {
+    width: 75%;
+    margin: 1rem auto;
+  }
+  .todo--notcompleted {
+    width: 75%;
+    margin: 1rem auto;
+  }
+}

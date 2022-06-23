@@ -1,0 +1,19 @@
+.footer-container {
+  padding:0;
+  min-height: 10vh;
+  width: 100vw;
+  background-color: var(--color2);
+  display: flex;
+  justify-content: space-around;
+}
+.footer--info {
+  font-size: x-small;
+  font-weight: 300;
+  font-family: "Hina Mincho", serif;
+}
+
+.footer--contact {
+  font-size: x-small;
+  font-weight: 300;
+  font-family: "Hina Mincho", serif;
+}

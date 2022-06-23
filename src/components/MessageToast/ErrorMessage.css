@@ -1,0 +1,15 @@
+.error-container {
+  background-color: var(--danger);
+  height: auto;
+  width: 80vw;
+  border-radius: 5px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:0 auto;
+}
+.error-container__info {
+  color: white;
+  font-size: 0.8rem;
+  font-family: cursive;
+}

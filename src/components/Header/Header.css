@@ -1,0 +1,29 @@
+.header-container {
+  width: 100vw;
+  margin-top: -1rem;
+  min-height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.header-title {
+  color: var(--color5);
+  font-size: 2rem;
+  font-family: "Hina Mincho", serif;
+  font-weight: 900;
+}
+.header-container a{
+  text-decoration:none;
+  color:var(--color5);
+}
+
+.header-container a:hover{
+  cursor:pointer;
+}
+
+@media screen and (min-width: 1100px) {
+  .headet-title {
+    font-size: 3rem;
+  }
+}

@@ -1,0 +1,39 @@
+.loginpage-container {
+  width: 100vw;
+  min-height: 70vh;
+  margin: 0;
+  padding: 1rem;
+  text-align: center;
+}
+
+.loginpage-container__logo {
+  width: 50vw;
+  height: 20vh;
+}
+.loginpage-container__info {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--color4);
+}
+
+@media screen and (min-width: 1100px) {
+  .loginpage-container {
+    width: 80vw;
+    display: flex;
+    flex-direction: row;
+    margin-top:1rem;
+  }
+  .loginpage-container__logo {
+    width: 45vw;
+    height: 40vh;
+  }
+  .loginpage-container__info {
+   margin-bottom:2rem;
+  }
+  .form-container {
+    width: 40vw;
+  }
+  .form-link{
+    margin-left:1rem;
+  }
+}
