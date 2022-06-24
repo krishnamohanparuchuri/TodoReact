@@ -13,3 +13,9 @@
   font-size: 0.8rem;
   font-family: cursive;
 }
+
+@media screen and (min-width: 1100px) {
+  .error-container{
+    width:50vw;
+  }
+}

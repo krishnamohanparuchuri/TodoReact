@@ -4,6 +4,7 @@ import "./RegisterPage.css";
 import logo from "../assets/Login.svg";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
+import Loading from "../components/Loading/Loading";
 import ErrorMessage from "../components/MessageToast/ErrorMessage";
 import SuccessMessage from "../components/MessageToast/SuccessMessage";
 import { RegisterUserInfo } from "../types";
@@ -20,6 +21,7 @@ const RegisterPage = () => {
   const [newuser, setNewUser] = useState<RegisterUserInfo>(initialState);
   const [successMessage, setSuccessMessage] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [isLoading,setIsLoading]= useState<boolean>(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
@@ -32,10 +34,12 @@ const RegisterPage = () => {
       newuser.email === "" ||
       newuser.userName === "" ||
       newuser.firstName === "" ||
-      newuser.lastName === ""
+      newuser.lastName === "" ||
+      newuser.password === ""
     ) {
       return;
     }
+    setIsLoading(true);
     const response = await fetch(
       `https://todowebapikrishna.azurewebsites.net/api/users/register`,
       {
@@ -50,6 +54,7 @@ const RegisterPage = () => {
     const data = await response.json();
     console.log(data);
     if (response.status === 200) {
+      setIsLoading(false);
       setSuccessMessage(`User account with ${data.userName}  been created`);
       setTimeout(() => {
         setSuccessMessage("");
@@ -57,6 +62,7 @@ const RegisterPage = () => {
       },4000);
       setNewUser(initialState);
     } else {
+      setIsLoading(false);
       setErrorMessage("somthing went wrong, Try again");
       setTimeout(() => {
         setErrorMessage("");
@@ -74,7 +80,9 @@ const RegisterPage = () => {
             alt="accesslogo"
           />
         </div>
-        <div className="registerpage-container__right">
+        {
+          isLoading ? <Loading /> : (
+            <div className="registerpage-container__right">
         <h1 className="registerpage-container__info">Register Account</h1>
 
         {successMessage && <SuccessMessage message={successMessage} />}
@@ -155,7 +163,8 @@ const RegisterPage = () => {
               !newuser.userName ||
               !newuser.firstName ||
               !newuser.lastName ||
-              !newuser.email
+              !newuser.email ||
+              !newuser.password
             }
           >
             Register
@@ -168,6 +177,9 @@ const RegisterPage = () => {
           </Link>
         </form>
         </div>
+        )
+        }
+        
       </section>
       <Footer />
     </>

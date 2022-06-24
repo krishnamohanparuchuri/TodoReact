@@ -4,6 +4,7 @@ import "./LoginPage.css";
 import logo from "../assets/helpfulsignin.svg";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
+import Loading from "../components/Loading/Loading";
 import ErrorMessage from "../components/MessageToast/ErrorMessage";
 import { LoginUserInfo } from "../types";
 
@@ -15,6 +16,7 @@ const LoginPage = () => {
   const [userName, setUserName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [repeatPassword, setRepeatPassword] = useState<string>("");
+  const [isLoading,setIsLoading]= useState<boolean>(false);
 
   if (localStorage.getItem("TODO_TOKEN_JWT") === null) {
     localStorage.setItem("TODO_TOKEN_JWT", "");
@@ -35,6 +37,7 @@ const LoginPage = () => {
   const loginUser = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("button clicked");
+    setIsLoading(true);
     const response = await fetch(
       `https://todowebapikrishna.azurewebsites.net/api/users/authenticate`,
       {
@@ -54,10 +57,12 @@ const LoginPage = () => {
     console.log(data);
     if (response.status === 200) {
       localStorage.setItem("TODO_TOKEN_JWT", JSON.stringify(data.token));
+      setIsLoading(false);
       setUserName("");
       setPassword("");
       navigate(`/user-info/${data.id}`);
     } else {
+      setIsLoading(false);
       setErrorMessage("somthing went wrong, Try again");
       setTimeout(() => {
         setErrorMessage("");
@@ -76,6 +81,8 @@ const LoginPage = () => {
             alt="accesslogo"
           />
         </div>
+        {
+          isLoading ? <Loading /> :(
         <div className="loginpage-container__right">
         <h2 className="loginpage-container__info">Login with Credentials</h2>
         {errorMessage && <ErrorMessage message={errorMessage} />}
@@ -136,6 +143,7 @@ const LoginPage = () => {
           </Link>
         </form>
         </div>
+        )}
       </section>
       <Footer />
     </>
